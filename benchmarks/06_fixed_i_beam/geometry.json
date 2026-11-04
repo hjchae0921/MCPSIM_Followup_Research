@@ -1,0 +1,101 @@
+{
+  "status": "geometry_draft_for_review",
+  "coordinate_unit": "mm",
+  "parameters": {
+    "length": 300.0,
+    "height": 40.0,
+    "width": 30.0,
+    "flange_thickness": 4.0,
+    "web_thickness": 3.0,
+    "mesh_size": 3.0
+  },
+  "axes": {
+    "x": "beam span",
+    "y": "flange width",
+    "z": "section height"
+  },
+  "groups": {
+    "End_Left": {
+      "dim": 2,
+      "tags": [
+        2
+      ],
+      "entities": [
+        1
+      ]
+    },
+    "End_Right": {
+      "dim": 2,
+      "tags": [
+        3
+      ],
+      "entities": [
+        14
+      ]
+    },
+    "Top_Surface": {
+      "dim": 2,
+      "tags": [
+        4
+      ],
+      "entities": [
+        8
+      ]
+    },
+    "Bottom_Surface": {
+      "dim": 2,
+      "tags": [
+        5
+      ],
+      "entities": [
+        2
+      ]
+    },
+    "Side_Surface": {
+      "dim": 2,
+      "tags": [
+        6
+      ],
+      "entities": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        9,
+        10,
+        11,
+        12,
+        13
+      ]
+    },
+    "Beam": {
+      "dim": 3,
+      "tags": [
+        1
+      ],
+      "entities": [
+        1
+      ]
+    }
+  },
+  "cad_volume_mm3": 100800.0,
+  "internal_interfaces": [],
+  "mesh": {
+    "nodes": 8731,
+    "tetrahedra": 27032,
+    "bounds": [
+      0.0,
+      -15.0,
+      -20.0,
+      300.0,
+      15.0,
+      20.0
+    ],
+    "minimum_signed_quality": 0.34472421583111124
+  },
+  "physics_status": "Deferred by user; no material or load values selected.",
+  "mesh_note": "Geometry review mesh; solution convergence has not been assessed.",
+  "section_area_mm2": 336.0,
+  "intended_family": "Thermoelastic I beam fixed at both ends"
+}

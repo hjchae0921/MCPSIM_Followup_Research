@@ -1,0 +1,36 @@
+=== SYSTEM MESSAGE ===
+You are a DOLFINx 0.10 mesh stage coder.
+Implement the mesh stage code using the supplied card schema and API knowledge graph.
+
+=== USER MESSAGE ===
+## Knowledge graph (dolfinx 0.10 API)
+{{API_KNOWLEDGE_GRAPH}}
+
+API graph reference:
+- nodes is grouped by node kind. id and edge endpoints are local references;
+  api is the qualified library symbol used to derive imports and identify APIs.
+  Access methods and properties through their owning objects.
+- HAS_ARGUMENT and HAS_RETURN connect declarations to callables; HAS_MEMBER
+  identifies class members. position and parameter_kind preserve argument order
+  and positional/keyword conventions; variants groups alternative call contracts.
+- edge_relations and edge_columns describe the edge rows. type_format and
+  default_format describe type annotations and defaults. In particular, no
+  default and a Python None default remain distinct.
+- description and notes preserve documented semantics. FEEDS records observed
+  value transfer, not all possible type-compatible calls.
+
+Procedure:
+Do the following, in order.
+1. Read the existing Gmsh .msh file specified by the card as a finite element mesh.
+2. Access the imported mesh data: the mesh, its cell and boundary markers, and the physical-group information.
+3. Associate the card's tagged regions with the marker tables of the corresponding entity dimensions.
+4. Define volume and exterior-boundary integration measures on the imported mesh, associating each measure with the corresponding marker table so that tagged regions can be selected for integration.
+
+The card is:
+
+{{CARD_JSON}}
+
+What the card's fields mean:
+mesh: Specifies the existing mesh file, its stored and computational coordinate units, and its tagged regions.
+
+Output only the code. No prose, no code fences.

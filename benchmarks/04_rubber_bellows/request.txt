@@ -1,0 +1,3 @@
+I would like to fix the bottom surface of the attached rubber bellows and slowly compress it by pushing the top surface downward by 8 mm. 
+Please neglect contact between adjacent folds and any time-dependent material behavior. 
+I would like to observe the deformation resulting from the compression.

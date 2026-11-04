@@ -1,0 +1,135 @@
+{
+  "problem": {
+    "type": "thermoelasticity",
+    "unknowns": [
+      "u",
+      "t"
+    ],
+    "linearity": "linear",
+    "time_dependence": "independent",
+    "history_dependence": false,
+    "dimension": 3,
+    "coupling": {
+      "type": "multi_physics_one_way",
+      "dependencies": [
+        {
+          "from": "t",
+          "to": "u"
+        }
+      ]
+    }
+  },
+  "materials": [
+    {
+      "constitutive_models": [
+        {
+          "model": "hooke",
+          "fields": [
+            "u"
+          ],
+          "symmetry": "isotropic"
+        },
+        {
+          "model": "fourier",
+          "fields": [
+            "t"
+          ],
+          "symmetry": "isotropic"
+        }
+      ]
+    }
+  ],
+  "formulation": {
+    "weak_form": [
+      {
+        "field": "u",
+        "unknown": "\\boldsymbol{u}",
+        "test_function": "\\boldsymbol{v}",
+        "type": "linear",
+        "bilinear_form": "a_u(\\boldsymbol{u},\\boldsymbol{v})=\\int_{\\Omega}\\boldsymbol{\\varepsilon}(\\boldsymbol{v}):\\mathbb{C}:\\boldsymbol{\\varepsilon}(\\boldsymbol{u})\\,d\\Omega+\\int_{\\Gamma_{u,R}}\\boldsymbol{v}\\cdot\\mathbf{K}_u\\boldsymbol{u}\\,d\\Gamma",
+        "linear_form": "L_u(\\boldsymbol{v};t)=\\int_{\\Omega}\\boldsymbol{v}\\cdot\\boldsymbol{b}\\,d\\Omega+\\int_{\\Gamma_{u,N}}\\boldsymbol{v}\\cdot\\bar{\\boldsymbol{\\tau}}\\,d\\Gamma+\\int_{\\Gamma_{u,R}}\\boldsymbol{v}\\cdot\\mathbf{K}_u\\boldsymbol{u}_{\\infty}\\,d\\Gamma+\\int_{\\Omega}\\boldsymbol{\\varepsilon}(\\boldsymbol{v}):\\mathbb{C}:\\left[\\alpha\\left(t-t_0\\right)\\mathbf{I}\\right] d\\Omega"
+      },
+      {
+        "field": "t",
+        "unknown": "t",
+        "test_function": "w",
+        "type": "linear",
+        "bilinear_form": "a_t(t,w)=\\int_{\\Omega}\\nabla w\\cdot k\\nabla t\\,d\\Omega+\\int_{\\Gamma_{t,R}}w h t\\,d\\Gamma",
+        "linear_form": "L_t(w)=\\int_{\\Omega}w Q\\,d\\Omega-\\int_{\\Gamma_{t,N}}w\\bar{q}\\,d\\Gamma+\\int_{\\Gamma_{t,R}}w h t_{\\infty}\\,d\\Gamma"
+      }
+    ],
+    "kinematics": [
+      "\\boldsymbol{\\varepsilon}(\\boldsymbol{u})=\\operatorname{sym}\\nabla\\boldsymbol{u}=\\frac{1}{2}\\left(\\nabla\\boldsymbol{u}+\\nabla\\boldsymbol{u}^{T}\\right)"
+    ],
+    "constitutive": [
+      "\\boldsymbol{\\varepsilon}^{\\mathrm{th}}=\\alpha\\left(t-t_0\\right)\\mathbf{I}",
+      "\\boldsymbol{\\sigma}=\\mathbb{C}:\\left(\\boldsymbol{\\varepsilon}(\\boldsymbol{u})-\\boldsymbol{\\varepsilon}^{\\mathrm{th}}\\right)",
+      "\\mathbb{C}=\\lambda\\,\\mathbf{I}\\otimes\\mathbf{I}+2\\mu\\,\\mathbb{I}_{\\mathrm{sym}},\\qquad \\lambda=\\frac{E\\nu}{(1+\\nu)(1-2\\nu)},\\qquad \\mu=\\frac{E}{2(1+\\nu)}",
+      "\\boldsymbol{q}=-k\\nabla t"
+    ],
+    "constitutive_parameters": [
+      {
+        "name": "young_modulus",
+        "symbol": "E"
+      },
+      {
+        "name": "poisson_ratio",
+        "symbol": "\\nu"
+      },
+      {
+        "name": "linear_thermal_expansion_coefficient",
+        "symbol": "\\alpha"
+      },
+      {
+        "name": "reference_temperature",
+        "symbol": "t_0"
+      },
+      {
+        "name": "thermal_conductivity",
+        "symbol": "k"
+      }
+    ],
+    "boundary_parameters": [
+      {
+        "name": "prescribed_traction",
+        "symbol": "\\bar{\\boldsymbol{\\tau}}",
+        "kind": "neumann"
+      },
+      {
+        "name": "displacement_robin_stiffness",
+        "symbol": "\\mathbf{K}_u",
+        "kind": "robin"
+      },
+      {
+        "name": "displacement_robin_reference",
+        "symbol": "\\boldsymbol{u}_{\\infty}",
+        "kind": "robin"
+      },
+      {
+        "name": "prescribed_outward_heat_flux",
+        "symbol": "\\bar{q}",
+        "kind": "neumann"
+      },
+      {
+        "name": "heat_transfer_coefficient",
+        "symbol": "h",
+        "kind": "robin"
+      },
+      {
+        "name": "ambient_temperature",
+        "symbol": "t_{\\infty}",
+        "kind": "robin"
+      }
+    ],
+    "source_parameters": [
+      {
+        "name": "body_force",
+        "symbol": "\\boldsymbol{b}"
+      },
+      {
+        "name": "volumetric_heat_source",
+        "symbol": "Q"
+      }
+    ]
+  }
+}

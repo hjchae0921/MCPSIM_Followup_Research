@@ -1,0 +1,108 @@
+{
+  "status": "geometry_draft_for_review",
+  "coordinate_unit": "mm",
+  "parameters": {
+    "length": 40.0,
+    "width": 5.0,
+    "layer_thickness": 0.5,
+    "mesh_size": 0.4
+  },
+  "axes": {
+    "x": "cantilever span",
+    "y": "width",
+    "z": "layer stack"
+  },
+  "groups": {
+    "Clamp_End": {
+      "dim": 2,
+      "tags": [
+        3
+      ],
+      "entities": [
+        1,
+        7
+      ]
+    },
+    "Free_End": {
+      "dim": 2,
+      "tags": [
+        4
+      ],
+      "entities": [
+        2,
+        8
+      ]
+    },
+    "Electrode_Top": {
+      "dim": 2,
+      "tags": [
+        5
+      ],
+      "entities": [
+        11
+      ]
+    },
+    "Electrode_Bottom": {
+      "dim": 2,
+      "tags": [
+        6
+      ],
+      "entities": [
+        5
+      ]
+    },
+    "Side_Surface": {
+      "dim": 2,
+      "tags": [
+        7
+      ],
+      "entities": [
+        3,
+        4,
+        9,
+        10
+      ]
+    },
+    "Piezo_Bottom": {
+      "dim": 3,
+      "tags": [
+        1
+      ],
+      "entities": [
+        1
+      ]
+    },
+    "Piezo_Top": {
+      "dim": 3,
+      "tags": [
+        2
+      ],
+      "entities": [
+        2
+      ]
+    }
+  },
+  "cad_volume_mm3": 199.99999999999994,
+  "internal_interfaces": [
+    6
+  ],
+  "mesh": {
+    "nodes": 5772,
+    "tetrahedra": 22450,
+    "bounds": [
+      0.0,
+      0.0,
+      0.0,
+      40.0,
+      5.0,
+      1.0
+    ],
+    "minimum_signed_quality": 0.2882982590485229
+  },
+  "physics_status": "Deferred by user; no material or load values selected.",
+  "mesh_note": "Geometry review mesh; solution convergence has not been assessed.",
+  "intended_family": "Piezoelectric cantilever actuator",
+  "contact": "Shared CAD interface and mesh nodes; perfect bond.",
+  "electrodes": "Surface groups only; no conductor volume or internal electrode.",
+  "poling": "Directions and tensors are physics inputs to be selected later."
+}

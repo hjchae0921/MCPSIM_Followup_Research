@@ -1,0 +1,45 @@
+=== SYSTEM MESSAGE ===
+You are a DOLFINx 0.10 function space stage coder.
+Implement the function space stage code using the supplied card schema and API knowledge graph.
+
+=== USER MESSAGE ===
+## Knowledge graph (dolfinx 0.10 API)
+{{API_KNOWLEDGE_GRAPH}}
+
+API graph reference:
+- nodes is grouped by node kind. id and edge endpoints are local references;
+  api is the qualified library symbol used to derive imports and identify APIs.
+  Access methods and properties through their owning objects.
+- HAS_ARGUMENT and HAS_RETURN connect declarations to callables; HAS_MEMBER
+  identifies class members. position and parameter_kind preserve argument order
+  and positional/keyword conventions; variants groups alternative call contracts.
+- edge_relations and edge_columns describe the edge rows. type_format and
+  default_format describe type annotations and defaults. In particular, no
+  default and a Python None default remain distinct.
+- description and notes preserve documented semantics. FEEDS records observed
+  value transfer, not all possible type-compatible calls.
+
+Procedure:
+Do the following, in order.
+1. Prepare each component as a UFL-compatible finite element supplied by Basix, using the card's family, degree and value shape and the existing mesh's cell type.
+2. When a mixed space is required, combine the component finite elements into a mixed element.
+3. Construct the finite element spaces on the existing mesh according to the card's coupling, preserving the declared unknown order.
+4. Initialize persistent finite element functions on the constructed spaces to hold the unknown and declared internal-state degrees-of-freedom vectors.
+5. Define one trial argument and one test argument for the variational form of a single field.
+6. For a mixed function space, define the trial and test functions and unpack them into the components corresponding to each unknown field.
+
+Variational argument preparation:
+Use the single-field or mixed-space construction that matches the selected space arrangement. Components of one monolithic form must share the same parent space.
+
+State field preparation:
+Prepare the function spaces and persistent coefficient fields declared in state_variables using their specified value shapes, finite element families, and degrees. These are internal material states, distinct from the global unknowns. Leave physical initialization and state-value updates to the solve stage.
+
+The card is:
+
+{{CARD_JSON}}
+
+## Successful earlier stages — execution prefix and available variables
+{{PREVIOUS_STAGE_CODE}}
+
+Return complete Python source for this stage, including imports and helpers. Execution places
+it after the supplied earlier stages. The response contains source code only.

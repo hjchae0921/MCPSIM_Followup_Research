@@ -1,0 +1,101 @@
+{
+  "status": "draft_for_review",
+  "coordinate_unit": "mm",
+  "parameters": {
+    "length": 200.0,
+    "gauge_length": 50.0,
+    "reduced_length": 60.0,
+    "reduced_width": 12.5,
+    "grip_width": 20.0,
+    "thickness": 3.0,
+    "shoulder_radius": 15.0,
+    "mesh_size": 2.0
+  },
+  "shoulder_profile": "Two tangent circular arcs per shoulder; equal radii and horizontal endpoint tangents",
+  "parallel_grip_length_mm": 55.47631245172219,
+  "gauge_window_x_mm": [
+    -25.0,
+    25.0
+  ],
+  "gauge_cross_section_mm2": 37.5,
+  "cad_volume_mm3": 10323.21703016375,
+  "axes": {
+    "x": "tension axis",
+    "y": "width",
+    "z": "thickness"
+  },
+  "groups": {
+    "Grip_Left": {
+      "dim": 2,
+      "tags": [
+        2
+      ],
+      "entities": [
+        17
+      ]
+    },
+    "Grip_Right": {
+      "dim": 2,
+      "tags": [
+        3
+      ],
+      "entities": [
+        9
+      ]
+    },
+    "Free_Surface": {
+      "dim": 2,
+      "tags": [
+        4
+      ],
+      "entities": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        18
+      ]
+    },
+    "Specimen": {
+      "dim": 3,
+      "tags": [
+        1
+      ],
+      "entities": [
+        1
+      ]
+    }
+  },
+  "dimension_reference": {
+    "standard": "ASTM E8/E8M-13a",
+    "figure": "Fig. 1, sheet-type",
+    "url": "https://www.galvanizeit.com/uploads/ASTM-E-8-yr-13.pdf"
+  },
+  "note": "Nominal benchmark geometry with a proposed shoulder profile; dimensions and physics are not yet approved.",
+  "mesh": {
+    "nodes": 2620,
+    "tetrahedra": 7209,
+    "bounds": [
+      -100.0,
+      -10.0,
+      0.0,
+      100.0,
+      10.0,
+      3.0
+    ],
+    "minimum_signed_quality": 0.3315029925089544
+  },
+  "physics_status": "Deferred by user; no material or load values selected.",
+  "mesh_note": "Geometry review mesh; solution convergence has not been assessed."
+}

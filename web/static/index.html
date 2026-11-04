@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Follow up research of MCP SIM</title>
+  <link rel="stylesheet" href="/selection/vendor/katex/katex.min.css"><link rel="stylesheet" href="/selection.css">
+  <script src="/selection/vendor/katex/katex.min.js" defer></script><script src="/mesh-viewer.js" defer></script><script src="/selection.js" defer></script>
+</head>
+<body>
+  <aside>
+    <a class="brand" href="/">Follow up research of MCP SIM</a>
+    <button id="new-chat" class="secondary">＋ New chat</button>
+    <details id="model-settings" class="settings" open><summary>Model settings</summary>
+      <section class="setting-group"><h2>Selection specification</h2><label for="classifier-model">Model</label><select id="classifier-model"><option value="gpt-5.4-mini">gpt-5.4-mini</option></select><label for="classifier-reasoning">Reasoning level</label><select id="classifier-reasoning"><option value="default">Model default</option><option value="low" selected>Low</option><option value="medium">Medium</option><option value="high">High</option></select></section>
+      <section class="setting-group"><h2>Formulation creation and review (fixed)</h2><label for="formulation-model">Model</label><select id="formulation-model"><option value="gpt-5.5">gpt-5.5</option></select><label for="formulation-reasoning">Reasoning level</label><select id="formulation-reasoning"><option value="default" selected>Model default</option><option value="low">Low</option><option value="medium">Medium</option><option value="high">High</option></select></section>
+      <section class="setting-group"><h2>Function space</h2><label for="functionspace-model">Model</label><select id="functionspace-model"><option value="gpt-5.4-mini">gpt-5.4-mini</option></select><label for="functionspace-reasoning">Reasoning level</label><select id="functionspace-reasoning"><option value="default">Model default</option><option value="low" selected>Low</option><option value="medium">Medium</option><option value="high">High</option></select></section>
+      <section class="setting-group"><h2>Material parameters</h2><label for="material-model">Model</label><select id="material-model"><option value="gpt-5.4-mini">gpt-5.4-mini</option></select><label for="material-reasoning">Reasoning level</label><select id="material-reasoning"><option value="default">Model default</option><option value="low" selected>Low</option><option value="medium">Medium</option><option value="high">High</option></select></section>
+      <section class="setting-group"><h2>Boundary, sources, and Dirichlet</h2><label for="boundary-model">Model</label><select id="boundary-model"><option value="gpt-5.4-mini">gpt-5.4-mini</option></select><label for="boundary-reasoning">Reasoning level</label><select id="boundary-reasoning"><option value="default">Model default</option><option value="low" selected>Low</option><option value="medium">Medium</option><option value="high">High</option></select></section>
+      <section class="setting-group"><h2>Solver settings</h2><label for="solver-model">Model</label><select id="solver-model"><option value="gpt-5.4-mini">gpt-5.4-mini</option></select><label for="solver-reasoning">Reasoning level</label><select id="solver-reasoning"><option value="default">Model default</option><option value="low" selected>Low</option><option value="medium">Medium</option><option value="high">High</option></select></section>
+      <section class="setting-group"><h2>KG-based coding and analysis</h2><label for="codegen-model">Coder model</label><select id="codegen-model"><option value="gpt-5.4-mini">gpt-5.4-mini</option></select><label for="codegen-reasoning">Reasoning level</label><select id="codegen-reasoning"><option value="default">Model default</option><option value="low" selected>Low</option><option value="medium">Medium</option><option value="high">High</option></select></section>
+    </details>
+  </aside>
+  <main>
+    <header><span id="status" class="badge">Waiting for request</span></header>
+    <ol class="steps"><li id="step-selection">Selection specification</li><li id="step-lookup">Library lookup</li><li id="step-review">Formulation review</li><li id="step-functionspace">Finalize function space</li><li id="step-material">Material parameters</li><li id="step-boundary">Conditions and regions</li><li id="step-boundary-values">Finalize values and units</li><li id="step-solver">Finalize solver</li></ol>
+    <p id="authoring-status" class="muted" role="status" hidden></p>
+    <div id="workspace">
+      <section id="mesh-panel" aria-label="Check mesh geometry and boundary surfaces"><details id="mesh-details" open><summary>Mesh and boundary regions</summary>
+        <div class="mesh-upload"><label for="mesh-file">Gmsh mesh (.msh)</label><input id="mesh-file" type="file" accept=".msh"><label for="mesh-unit">Length unit of file coordinates</label><select id="mesh-unit"><option value="">Unconfirmed</option><option value="mm">mm</option><option value="m">m</option><option value="cm">cm</option><option value="um">µm</option></select><button id="upload-mesh" type="button" class="secondary">Load mesh</button></div>
+        <p id="mesh-info" class="muted">Please load the .msh file first.</p>
+        <div id="mesh-display" hidden>
+          <div class="mesh-canvas-wrap"><canvas id="mesh-canvas" aria-label="3D mesh with rotation and boundary selection enabled"></canvas><svg id="mesh-axes" viewBox="0 0 100 100" aria-label="Original mesh coordinate axes"></svg></div>
+          <p class="muted">Drag: rotate · Wheel: zoom · Shift+drag: pan<br>Click a surface or group to highlight the corresponding boundary surface.</p>
+          <div class="mesh-toolbar"><button id="reset-view" type="button" class="secondary">Reset view</button><button id="clear-region" type="button" class="secondary">Clear selection</button><label><input id="isolate-mesh" type="checkbox">Show only selected region</label></div>
+          <dl id="mesh-metadata"></dl>
+          <h2>Volume region for material application</h2><div id="volume-groups" aria-label="Volume Physical Group list"></div><button id="use-material-region" type="button" class="secondary" disabled>Use the selected volume region in the chat</button>
+          <button id="use-boundary-region" type="button" class="secondary" disabled>Use the selected region in the parameter judgment chat</button>
+          <h2>Tagged boundary surface</h2><div id="mesh-groups" aria-label="Boundary group list"></div>
+          <p id="selected-region" class="muted">If you select a boundary surface, you can check its tag and geometry information.</p>
+        </div>
+      </details></section>
+      <section id="chat-panel" aria-label="Physical specification chat">
+    <div id="conversation" role="log" aria-live="polite"><section id="welcome"><span class="welcome-icon">∂</span><h2>What analysis would you like to perform?</h2><p>Finalize the selection specification using the mesh and the natural-language request.<br>Reuse registered formulations, and have an expert review any missing formulations.</p></section><div id="messages"></div><div id="pending" hidden><span class="spinner"></span><span id="pending-label">Preparing a response…</span></div></div>
+    <footer><div id="error" role="alert" hidden></div><form id="chat-form"><label class="sr-only" for="message">Request or confirmation reply</label><textarea id="message" rows="3" placeholder="Example: I want to analyze a metal tensile specimen with isotropic linear elasticity under small deformation."></textarea><button id="send">Send ↑</button></form><p id="composer-note" class="muted">At this step, do not enter function space or material values. · Enter to send / Shift+Enter for line break</p></footer>
+      </section>
+    </div>
+  </main>
+</body>
+</html>

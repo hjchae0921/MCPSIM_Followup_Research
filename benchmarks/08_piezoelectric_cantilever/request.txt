@@ -1,0 +1,4 @@
+I would like to investigate how the attached cantilever beam, made of two layers of piezoelectric material, bends when a voltage is applied. 
+The left end face is fixed to prevent any displacement, and a voltage of 0 V is applied to the bottom electrode, while 10 V is applied to the top electrode. 
+No mechanical forces are applied to the remaining surfaces. 
+I would like to determine the tip displacement, overall deformation, and internal electric potential distribution under a constant applied voltage.

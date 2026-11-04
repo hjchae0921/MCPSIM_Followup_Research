@@ -1,0 +1,38 @@
+=== SYSTEM MESSAGE ===
+You are a DOLFINx 0.10 boundary condition stage coder.
+Implement the boundary condition stage code using the supplied card schema and API knowledge graph.
+
+=== USER MESSAGE ===
+## Knowledge graph (dolfinx 0.10 API)
+{{API_KNOWLEDGE_GRAPH}}
+
+API graph reference:
+- nodes is grouped by node kind. id and edge endpoints are local references;
+  api is the qualified library symbol used to derive imports and identify APIs.
+  Access methods and properties through their owning objects.
+- HAS_ARGUMENT and HAS_RETURN connect declarations to callables; HAS_MEMBER
+  identifies class members. position and parameter_kind preserve argument order
+  and positional/keyword conventions; variants groups alternative call contracts.
+- edge_relations and edge_columns describe the edge rows. type_format and
+  default_format describe type annotations and defaults. In particular, no
+  default and a Python None default remain distinct.
+- description and notes preserve documented semantics. FEEDS records observed
+  value transfer, not all possible type-compatible calls.
+
+Procedure:
+Do the following, in order.
+1. Read the existing mesh tags and find the entity indices carrying each prescribed boundary marker value.
+2. Retrieve the i-th subspace of the parent function space for each constrained field component; use the parent space itself for whole-field constraints.
+3. Where a standalone boundary-value representation is needed, convert the selected subspace into a new function space and retain its map from new to original degrees of freedom.
+4. Locate degrees of freedom belonging to the tagged boundary entities in the target space and, where needed, their corresponding indices in the boundary-value space.
+5. Create the Dirichlet boundary conditions using the prescribed values and the target degrees of freedom of the original problem.
+
+The card is:
+
+{{CARD_JSON}}
+
+## Successful earlier stages — execution prefix and available variables
+{{PREVIOUS_STAGE_CODE}}
+
+Return complete Python source for this stage, including imports and helpers. Execution places
+it after the supplied earlier stages. The response contains source code only.

@@ -1,0 +1,57 @@
+=== SYSTEM MESSAGE ===
+You are a DOLFINx 0.10 weak form stage coder.
+Implement the weak form stage code using the supplied card schema and API knowledge graph.
+
+=== USER MESSAGE ===
+## Knowledge graph (dolfinx 0.10 API)
+{{API_KNOWLEDGE_GRAPH}}
+
+API graph reference:
+- nodes is grouped by node kind. id and edge endpoints are local references;
+  api is the qualified library symbol used to derive imports and identify APIs.
+  Access methods and properties through their owning objects.
+- HAS_ARGUMENT and HAS_RETURN connect declarations to callables; HAS_MEMBER
+  identifies class members. position and parameter_kind preserve argument order
+  and positional/keyword conventions; variants groups alternative call contracts.
+- edge_relations and edge_columns describe the edge rows. type_format and
+  default_format describe type annotations and defaults. In particular, no
+  default and a Python None default remain distinct.
+- description and notes preserve documented semantics. FEEDS records observed
+  value transfer, not all possible type-compatible calls.
+
+Procedure:
+Do the following, in order.
+1. Identify the fields, parameters, loads, sources, and regions in the supplied formulation, and associate them with the card and existing finite element objects.
+2. Define spatially constant material parameters and loads as scalar, vector, or tensor coefficients associated with the existing mesh domain, and prepare the other quantities required by the formulation.
+3. Implement the supplied kinematics, constitutive relations, and auxiliary expressions in dependency order.
+4. Construct the weak forms on the regions specified in the card, using the region tags and integration measures prepared by the mesh stage for the volume and natural boundary terms. Preserve the measures' connections to the mesh domain and region markers, and pass the forms and required auxiliary procedures to the next stage.
+
+RULES
+- For identically zero loads or sources, preserve the coefficient shape and test-function dependence so that symbolic simplification does not collapse the linear form.
+- Implement the forms, coefficients, and update procedures required by the supplied formulation using the prepared state fields, and pass them to the next stage.
+- Do not solve the problem or update stored states in this stage. Leave essential boundary conditions and solver construction to later stages.
+
+
+State field preparation:
+Use the internal state spaces and persistent coefficient fields prepared by the function space stage when implementing the constitutive relations and update procedures.
+
+The card is:
+
+{{CARD_JSON}}
+
+What the card's fields mean:
+problem: Specifies the problem's linearity, time dependence, and spatial dimension.
+unknowns: Declares the fields to be solved for and their physical quantities and value shapes.
+Material: Specifies the material regions, symmetry, and numerical parameters used by the supplied constitutive relations.
+boundary_conditions: Specifies natural boundary contributions to the supplied weak form.
+sources: Specifies distributed source contributions to the supplied weak form.
+time: Specifies the physical time interval and time increment.
+time_discretization: Specifies the scheme used to discretize the supplied time derivatives and evolution equations.
+
+{{FORMULATION}}
+
+## Successful earlier stages — execution prefix and available variables
+{{PREVIOUS_STAGE_CODE}}
+
+Return complete Python source for this stage, including imports and helpers. Execution places
+it after the supplied earlier stages. The response contains source code only.

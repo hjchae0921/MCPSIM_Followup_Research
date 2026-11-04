@@ -1,0 +1,58 @@
+=== SYSTEM MESSAGE ===
+You are a DOLFINx 0.10 solve stage coder.
+Implement the solve stage code using the supplied card schema and API knowledge graph.
+
+=== USER MESSAGE ===
+## Knowledge graph (dolfinx 0.10 API)
+{{API_KNOWLEDGE_GRAPH}}
+
+API graph reference:
+- nodes is grouped by node kind. id and edge endpoints are local references;
+  api is the qualified library symbol used to derive imports and identify APIs.
+  Access methods and properties through their owning objects.
+- HAS_ARGUMENT and HAS_RETURN connect declarations to callables; HAS_MEMBER
+  identifies class members. position and parameter_kind preserve argument order
+  and positional/keyword conventions; variants groups alternative call contracts.
+- edge_relations and edge_columns describe the edge rows. type_format and
+  default_format describe type annotations and defaults. In particular, no
+  default and a Python None default remain distinct.
+- description and notes preserve documented semantics. FEEDS records observed
+  value transfer, not all possible type-compatible calls.
+
+Procedure:
+Do the following, in order.
+1. Construct a high-level PETSc variational problem from the prepared forms and boundary conditions, selecting the linear or nonlinear formulation required by the card.
+2. Configure the problem's underlying PETSc linear or nonlinear solver using the computational settings in the card.
+3. Execute the variational problem to update its stored finite element solution fields, check solver convergence, and commit the converged fields and required internal states.
+
+RULES
+- Solve the problem using the supplied initial conditions and computational settings, performing any required time stepping, load stepping, and coupled calculations.
+- When state updates are required, evaluate all new states using the converged solution of the current step and the previous states. 
+Keep the previous states unchanged until all new state values have been evaluated. 
+Then store these numerical values in the persistent state fields used by the forms for the next step.
+
+The card is:
+
+{{CARD_JSON}}
+
+What the card's fields mean:
+problem: Specifies the problem's linearity, time dependence, and spatial dimension.
+unknowns: Declares the fields to be solved for and their physical quantities and value shapes.
+state_variables: Declares the stored internal quantities, their value shapes, and the finite element family and polynomial degree used to represent each quantity, distinct from the global unknowns.
+solver: Specifies the linear or nonlinear solution method and its computational settings.
+time: Specifies the physical time interval and time increment.
+time_stepping: Specifies the time-step adaptation setting and optional step limit.
+initial_conditions: Specifies initial physical values for unknown fields or internal state variables, including material history in quasistatic problems.
+initial_guess: Specifies numerical starting values for iterative solution procedures, distinct from physical initial conditions.
+
+Internal State Update Formulation
+null
+
+State Update Symbol Definitions
+null
+
+## Successful earlier stages — execution prefix and available variables
+{{PREVIOUS_STAGE_CODE}}
+
+Return complete Python source for this stage, including imports and helpers. Execution places
+it after the supplied earlier stages. The response contains source code only.

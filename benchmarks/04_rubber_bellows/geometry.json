@@ -1,0 +1,183 @@
+{
+  "status": "geometry_draft_for_review",
+  "coordinate_unit": "mm",
+  "parameters": {
+    "mean_radius": 15.0,
+    "wall": 2.0,
+    "amplitude": 3.0,
+    "wave_count": 4,
+    "wave_length": 10.0,
+    "collar_length": 5.0,
+    "mesh_size": 1.25
+  },
+  "axes": {
+    "z": "axial extension",
+    "x/y": "radial plane"
+  },
+  "groups": {
+    "Collar_Left": {
+      "dim": 2,
+      "tags": [
+        2
+      ],
+      "entities": [
+        22,
+        46,
+        69,
+        92
+      ]
+    },
+    "Collar_Right": {
+      "dim": 2,
+      "tags": [
+        3
+      ],
+      "entities": [
+        11,
+        35,
+        58,
+        81
+      ]
+    },
+    "Inner_Wall": {
+      "dim": 2,
+      "tags": [
+        4
+      ],
+      "entities": [
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        59,
+        60,
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67,
+        68,
+        82,
+        83,
+        84,
+        85,
+        86,
+        87,
+        88,
+        89,
+        90,
+        91
+      ]
+    },
+    "Outer_Wall": {
+      "dim": 2,
+      "tags": [
+        5
+      ],
+      "entities": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        71,
+        72,
+        73,
+        74,
+        75,
+        76,
+        77,
+        78,
+        79,
+        80
+      ]
+    },
+    "Rubber": {
+      "dim": 3,
+      "tags": [
+        1
+      ],
+      "entities": [
+        1,
+        2,
+        3,
+        4
+      ]
+    }
+  },
+  "cad_volume_mm3": 9055.505661174795,
+  "internal_interfaces": [
+    23,
+    24,
+    47,
+    70
+  ],
+  "mesh": {
+    "nodes": 13004,
+    "tetrahedra": 42300,
+    "bounds": [
+      -19.0,
+      -19.0,
+      0.0,
+      19.0,
+      19.0,
+      50.0
+    ],
+    "minimum_signed_quality": 0.29931067956073787
+  },
+  "physics_status": "Deferred by user; no material or load values selected.",
+  "mesh_note": "Geometry review mesh; solution convergence has not been assessed.",
+  "total_length_mm": 50.0,
+  "radial_extent_mm": [
+    11.0,
+    19.0
+  ],
+  "profile": "r_mid(z) = mean_radius - amplitude*cos(2*pi*(z-collar_length)/wave_length), spline through 24 points per wave",
+  "wall_definition": "Constant radial wall thickness; normal thickness varies along the corrugation.",
+  "collar_groups": "End annular faces; inner/outer wall groups include the smooth collar walls.",
+  "partition": "Four conformal quarter solids, all assigned to one Rubber Physical Group; no physical seams or gaps.",
+  "intended_family": "Hyperelastic rubber bellows"
+}

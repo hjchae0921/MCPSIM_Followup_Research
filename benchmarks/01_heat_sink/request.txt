@@ -1,0 +1,3 @@
+A total heat load of 48 W is uniformly applied to the entire bottom surface of the attached heat sink, while the remaining exposed surfaces are in contact with air at 20°C. 
+I would like to see the temperature distribution. 
+The heat sink is made of aluminum.

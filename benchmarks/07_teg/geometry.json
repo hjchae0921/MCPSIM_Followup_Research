@@ -1,0 +1,134 @@
+{
+  "status": "geometry_draft_for_review",
+  "coordinate_unit": "mm",
+  "parameters": {
+    "leg_width": 2.0,
+    "depth": 2.0,
+    "leg_height": 5.0,
+    "gap": 2.0,
+    "copper_thickness": 0.5,
+    "mesh_size": 0.4
+  },
+  "axes": {
+    "x": "p/n leg separation",
+    "y": "depth",
+    "z": "cold-to-hot direction"
+  },
+  "groups": {
+    "Hot_Surface": {
+      "dim": 2,
+      "tags": [
+        4
+      ],
+      "entities": [
+        18
+      ]
+    },
+    "Terminal_A": {
+      "dim": 2,
+      "tags": [
+        5
+      ],
+      "entities": [
+        23
+      ]
+    },
+    "Terminal_B": {
+      "dim": 2,
+      "tags": [
+        6
+      ],
+      "entities": [
+        28
+      ]
+    },
+    "Side_Surface": {
+      "dim": 2,
+      "tags": [
+        7
+      ],
+      "entities": [
+        1,
+        2,
+        3,
+        4,
+        7,
+        8,
+        9,
+        10,
+        13,
+        14,
+        15,
+        16,
+        17,
+        19,
+        20,
+        21,
+        22,
+        24,
+        25,
+        26,
+        27
+      ]
+    },
+    "P_Leg": {
+      "dim": 3,
+      "tags": [
+        1
+      ],
+      "entities": [
+        1
+      ]
+    },
+    "N_Leg": {
+      "dim": 3,
+      "tags": [
+        2
+      ],
+      "entities": [
+        2
+      ]
+    },
+    "Copper": {
+      "dim": 3,
+      "tags": [
+        3
+      ],
+      "entities": [
+        3,
+        4,
+        5
+      ]
+    }
+  },
+  "cad_volume_mm3": 49.99999999999999,
+  "internal_interfaces": [
+    5,
+    6,
+    11,
+    12
+  ],
+  "mesh": {
+    "nodes": 1569,
+    "tetrahedra": 5821,
+    "bounds": [
+      0.0,
+      0.0,
+      0.0,
+      6.0,
+      2.0,
+      6.0
+    ],
+    "minimum_signed_quality": 0.32903276923475483
+  },
+  "physics_status": "Deferred by user; no material or load values selected.",
+  "mesh_note": "Geometry review mesh; solution convergence has not been assessed.",
+  "intended_family": "Thermoelectric generator",
+  "thermal_cold_groups": [
+    "Terminal_A",
+    "Terminal_B"
+  ],
+  "topology": "P leg and N leg connected by one hot copper bridge; separate cold copper pads.",
+  "contact": "Shared CAD faces and shared mesh nodes; no contact resistance or ceramic domains.",
+  "boundary_note": "Cold thermal faces are Terminal_A and Terminal_B; no overlapping Cold_Surface tag."
+}

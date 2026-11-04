@@ -1,0 +1,15 @@
+Bundled reference material
+
+api_md/ contains API reference documents for DOLFINx, Basix and UFL.
+demos/ contains official FEniCS/DOLFINx tutorial notebooks. Copyright and
+licensing notices included in those files are retained.
+
+Upstream projects and reference documentation:
+https://github.com/FEniCS/dolfinx
+https://github.com/FEniCS/basix
+https://github.com/FEniCS/ufl
+https://docs.fenicsproject.org/dolfinx/v0.10.0/python/
+
+web/static/vendor/katex/ contains KaTeX JavaScript, styles and fonts.
+The included license is web/static/vendor/katex/LICENSE.
+https://github.com/KaTeX/KaTeX

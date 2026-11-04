@@ -1,0 +1,2 @@
+I would like to heat the right end of the attached metal I-beam while keeping both end faces fixed in place. The left end is attached to a support maintained at 20°C, a total heat load is uniformly applied across the entire right end face, and the side surfaces are insulated to prevent heat loss. 
+I would like to observe the temperature distribution and the resulting thermal deformation.

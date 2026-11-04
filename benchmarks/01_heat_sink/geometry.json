@@ -1,0 +1,116 @@
+{
+  "status": "draft_for_review",
+  "coordinate_unit": "mm",
+  "parameters": {
+    "length": 80.0,
+    "width": 60.0,
+    "base_thickness": 5.0,
+    "fin_count": 12,
+    "fin_thickness": 2.0,
+    "fin_height": 25.0,
+    "mesh_size": 2.0
+  },
+  "fin_gap_mm": 4.3076923076923075,
+  "cad_volume_mm3": 60000.0,
+  "groups": {
+    "Base_Bottom": {
+      "dim": 2,
+      "tags": [
+        2
+      ],
+      "entities": [
+        5
+      ]
+    },
+    "Exposed_Surface": {
+      "dim": 2,
+      "tags": [
+        3
+      ],
+      "entities": [
+        1,
+        2,
+        3,
+        4,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54
+      ]
+    },
+    "Solid": {
+      "dim": 3,
+      "tags": [
+        1
+      ],
+      "entities": [
+        1
+      ]
+    }
+  },
+  "axes": {
+    "x": "fin array direction",
+    "y": "fin length",
+    "z": "height"
+  },
+  "mesh": {
+    "nodes": 16484,
+    "tetrahedra": 51780,
+    "bounds": [
+      0.0,
+      0.0,
+      0.0,
+      80.0,
+      60.0,
+      30.0
+    ],
+    "minimum_signed_quality": 0.001093848255677838
+  },
+  "physics_status": "Deferred by user; no material or load values selected.",
+  "mesh_note": "Geometry review mesh; solution convergence has not been assessed."
+}

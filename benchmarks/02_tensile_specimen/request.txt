@@ -1,0 +1,2 @@
+I would like to fix the left end face of the attached metal tensile specimen, and slowly pull the right end face by 0.1 mm in the longitudinal direction. 
+I would like to observe the resulting deformation.

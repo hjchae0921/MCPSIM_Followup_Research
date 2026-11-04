@@ -1,0 +1,37 @@
+{
+  "mesh": [
+    "dolfinx.io.gmsh.read_from_msh",
+    "dolfinx.io.gmsh.MeshData.mesh",
+    "dolfinx.io.gmsh.MeshData.cell_tags",
+    "dolfinx.io.gmsh.MeshData.facet_tags",
+    "dolfinx.io.gmsh.MeshData.ridge_tags",
+    "dolfinx.io.gmsh.MeshData.peak_tags",
+    "dolfinx.io.gmsh.MeshData.physical_groups",
+    "ufl.Measure"
+  ],
+  "function_space": [
+    "basix.ufl.element",
+    "basix.ufl.mixed_element",
+    "dolfinx.fem.functionspace",
+    "dolfinx.fem.Function",
+    "ufl.TrialFunction",
+    "ufl.TestFunction",
+    "ufl.TrialFunctions",
+    "ufl.TestFunctions"
+  ],
+  "boundary_conditions": [
+    "dolfinx.mesh.MeshTags.find",
+    "dolfinx.fem.FunctionSpace.sub",
+    "dolfinx.fem.FunctionSpace.collapse",
+    "dolfinx.fem.locate_dofs_topological",
+    "dolfinx.fem.dirichletbc"
+  ],
+  "solve": [
+    "dolfinx.fem.petsc.LinearProblem",
+    "dolfinx.fem.petsc.LinearProblem.solve",
+    "dolfinx.fem.petsc.LinearProblem.solver",
+    "dolfinx.fem.petsc.NonlinearProblem",
+    "dolfinx.fem.petsc.NonlinearProblem.solve",
+    "dolfinx.fem.petsc.NonlinearProblem.solver"
+  ]
+}

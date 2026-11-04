@@ -1,0 +1,5 @@
+Compare the user's request and confirmed choices with the library candidates. The initial draft is provisional and may be wrong.
+
+Return a matching library_id when an existing entry represents the requested physics, allowing equivalent field names and different decompositions of the same constitutive laws. Return that identifier directly; the server supplies the stored specification.
+
+When no candidate fits, return a corrected specification and its genuine ambiguities using the supplied schema. Preserve the requested physics and ask only about unresolved physical choices. An available library entry does not justify changing the user's assumptions.
